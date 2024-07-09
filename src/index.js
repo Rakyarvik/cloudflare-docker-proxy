@@ -34,7 +34,7 @@ async function handleRequest(request) {
   const url = new URL(request.url);
   const upstream = routeByHosts(url.hostname);
   
-import DOCS from './help.html'
+import DOCS from './help.html';
  
 // return docs
 if (url.pathname === "/") {
