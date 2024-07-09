@@ -4,7 +4,7 @@ addEventListener("fetch", (event) => {
 });
 
 const dockerHub = "https://registry-1.docker.io";
-
+import DOCS from './help.html';
 const routes = {
   // production
   "docker.rakyarvik.top": dockerHub,
@@ -34,7 +34,7 @@ async function handleRequest(request) {
   const url = new URL(request.url);
   const upstream = routeByHosts(url.hostname);
   
-import DOCS from './help.html';
+
  
 // return docs
 if (url.pathname === "/") {
