@@ -33,6 +33,19 @@ function routeByHosts(host) {
 async function handleRequest(request) {
   const url = new URL(request.url);
   const upstream = routeByHosts(url.hostname);
+  
+import DOCS from './help.html'
+ 
+// return docs
+if (url.pathname === "/") {
+  return new Response(DOCS, {
+    status: 200,
+    headers: {
+      "content-type": "text/html"
+    }
+  });
+}
+
   if (upstream === "") {
     return new Response(
       JSON.stringify({
@@ -152,16 +165,4 @@ async function fetchToken(wwwAuthenticate, scope, authorization) {
     headers.set("Authorization", authorization);
   }
   return await fetch(url, { method: "GET", headers: headers });
-}
-
-import DOCS from './help.html'
- 
-// return docs
-if (url.pathname === "/") {
-  return new Response(DOCS, {
-    status: 200,
-    headers: {
-      "content-type": "text/html"
-    }
-  });
 }
